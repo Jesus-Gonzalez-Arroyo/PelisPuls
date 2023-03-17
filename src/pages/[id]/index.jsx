@@ -1,7 +1,8 @@
 import ConectarBD from "@/lib/dbConect";
 import Movie from "@/models/Movie";
 import Link from "next/link";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
+import Style from '../../styles/ViewMovie.module.scss'
 
 const MoviePage = ({success, error, movie}) => {
 
@@ -28,17 +29,20 @@ const MoviePage = ({success, error, movie}) => {
     }
 
     return(
-        <div>
-            <h1>Detalles de la pelicula</h1>
-            <div className="card">
-                <div className="card-body">
-                    <div className="card-title">
-                        <h5 className="text-uppercase">{movie.title}</h5>
+        <div className={Style.Container_grid}>
+            <div className={Style.CardMovie}>
+                <h1>Detalles de la pelicula</h1>
+                <div className={Style.CardBody}>
+                    <div className={Style.ImgMovie}>
+                        <img src={`${movie.image}`}/>
                     </div>
-                    <p className="fw-light">{movie.description}</p>
-                    <Link href='/' className="btn btn-primary btn-sm">Volver</Link>
-                    <button className="btn btn-danger btn-sm" onClick={()=>DeleteData(movie._id)}>Eliminar</button>
-                    <Link href={`/${movie._id}/edit`} className="btn btn-warning btn-sm">Actualizar</Link>
+                    <h5 className={Style.TitleMovie}>{movie.title}</h5>
+                    <p className={Style.DescriptionMovie}>{movie.description}</p>
+                    <div className={Style.CardAcciones}>
+                        <Link href='/' className={Style.Btn_accion}>Volver</Link>
+                        <button className={Style.Btn_accion} onClick={()=>DeleteData(movie._id)}>Eliminar</button>
+                        <Link href={`/${movie._id}/edit`} className={Style.Btn_accion}>Actualizar</Link>
+                    </div>
                 </div>
             </div>
         </div>

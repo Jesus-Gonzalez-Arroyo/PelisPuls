@@ -1,5 +1,46 @@
 $success: #000;
 
+.ContainerForm {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Form {
+    width: 500px;
+    padding: 60px;
+    border-radius: 10px;
+    background: #19A7CE;
+}
+
+.FormInput {
+    width: 480px;
+    margin: 20px 0;
+    padding: 8px;
+    display: block;
+}
+
+.Container_buttons {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    gap: 15px;
+}
+
+.Btn_submit {
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 .btn_volver {
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
     background: $success;
 }

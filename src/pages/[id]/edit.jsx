@@ -31,7 +31,6 @@ const EditMovie = () => {
 
     return(
         <div className="container">
-            <h1>Actualizar movie</h1>
             <Form forNewMovie={false} formData={formData}/>
         </div>
     )

@@ -67,10 +67,11 @@ const Form = ({formData, forNewMovie = true}) => {
     }
 
     return(
-        <div>
-            <form onSubmit={Handlesubmit}>
+        <div className={Style.ContainerForm}>
+            <form className={Style.Form} onSubmit={Handlesubmit}>
+                <h1 className="my-3">{forNewMovie ? 'Agregar movie' : 'Actualizar Movie'}</h1>
                 <input type="text" 
-                className="form-control my-2" 
+                className={Style.FormInput} 
                 placeholder="title"
                 autoComplete="off"
                 name="title"
@@ -78,7 +79,7 @@ const Form = ({formData, forNewMovie = true}) => {
                 onChange={HandleChange}
                 />
                 <input type="text" 
-                className="form-control my-2" 
+                className={Style.FormInput} 
                 placeholder="description"
                 autoComplete="off"
                 name="description"
@@ -86,18 +87,20 @@ const Form = ({formData, forNewMovie = true}) => {
                 onChange={HandleChange}
                 />
                 <input type="text" 
-                className="form-control my-2" 
+                className={Style.FormInput} 
                 placeholder="Imagen"
                 name="image"
                 value={form.image}
                 onChange={HandleChange}
                 />
-                <button className="btn btn-primary w-50" type="submit">
+                <div className={Style.Container_buttons}>
+                <button className={Style.Btn_submit} type="submit">
                     {forNewMovie ? 'Agregar' : 'Actualizar'}
                 </button>
                 <Link href="/" className={Style.btn_volver}>
                     Volver
                 </Link>
+                </div>
             </form>
         </div>
     )
