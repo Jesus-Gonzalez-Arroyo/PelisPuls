@@ -1,6 +1,7 @@
 import Form from "@/components/Form"
 import { useRouter } from "next/router"
 import useSWR from 'swr'
+import Style from '../../styles/Loading.module.scss'
 
 const fetcher = url => (
     fetch(url)
@@ -17,7 +18,8 @@ const EditMovie = () => {
 
     if(!movie) {
         return (
-            <div className="container text-center">
+            <div className={Style.ContainerSpinner}>
+                <div className={Style.Spinner}></div>
                 <h1>Loading...</h1>
             </div>
         )
