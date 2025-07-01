@@ -14,9 +14,11 @@
     "eslint-config-next": "13.2.3",
     "mongoose": "^7.0.1",
     "next": "13.2.3",
+    "primereact": "^10.9.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.59.3",
-    "swr": "^2.1.0"
+    "swr": "^2.1.0",
+    "tailwind": "^4.0.0"
   }
 }
