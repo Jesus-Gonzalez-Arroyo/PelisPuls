@@ -1,0 +1,23 @@
+.containerLayout {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.containerLinks {
+    width: 15%;
+    background: #1a8ce6;
+}
+
+.containerChildren {
+    width: 85%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.Links {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}

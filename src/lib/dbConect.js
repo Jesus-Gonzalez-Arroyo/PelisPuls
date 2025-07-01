@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const URI_MONGO = `mongodb+srv://movies-app:KBMGRuW1HdfvAtl4@cluster0.nbhqxkl.mongodb.net/movies-app`
+const URI_MONGO = process.env.URL_DB
 
 const ConectarBD = async() => {
     try {
