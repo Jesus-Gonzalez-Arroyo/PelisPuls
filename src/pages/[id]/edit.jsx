@@ -10,7 +10,6 @@ const fetcher = url => (
 )
 
 const EditMovie = () => {
-
     const router = useRouter()
     const { id } = router.query
 
@@ -28,7 +27,8 @@ const EditMovie = () => {
     const formData = {
         title: movie.title,
         description: movie.description,
-        image: movie.image
+        image: movie.image,
+        active: movie.active
     }
 
     return(

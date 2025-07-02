@@ -5,10 +5,11 @@ const New = () => {
     const formData = {
         title: '',
         description: '',
-        image: ''
+        image: '',
+        active: ''
     }
 
-    return(
+    return (
         <div className="container">
             <Form formData={formData} />
         </div>

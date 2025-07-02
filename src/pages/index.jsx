@@ -3,10 +3,17 @@ import ConectarBD from '@/lib/dbConect'
 import Movie from '../models/Movie'
 import Table from '@/components/Table'
 import Layout from '@/layouts/Layout'
+import Dashboard from './dashboard/page'
 import { PrimeReactProvider } from 'primereact/api';
+import { useEffect } from 'react'
 import 'primereact/resources/themes/bootstrap4-light-blue/theme.css';
 
 export default function Home({movies}) {
+
+  useEffect(()=>{
+    localStorage.setItem('movies', JSON.stringify(movies))
+  })
+
   return (
     <PrimeReactProvider>
       <Head>
@@ -15,11 +22,11 @@ export default function Home({movies}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <main>
-          <Table movies={[...movies].reverse()} />
-        </main>
-      </Layout>
+          <Layout>
+            <main>
+              <Dashboard movies={movies} />
+            </main>
+          </Layout> 
     </PrimeReactProvider>
   )
 }
@@ -35,6 +42,11 @@ export async function getServerSideProps() {
     })
     return {props: {movies}}
   } catch (error) {
-    console.log(error)
+    console.error(error);
+    return {
+      props: {
+        error: error.message || 'Error inesperado',
+      },
+    };
   }
 }

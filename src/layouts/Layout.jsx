@@ -5,13 +5,16 @@ export default function Layout({ children }) {
     return (
         <div className={Style.containerLayout}>
             <div className={Style.containerLinks}>
-                <div><p>Pelisplus Administrador</p></div>
+                <div className={Style.title}><p>Pelisplus Administrador</p></div>
                 <div className={Style.Links}>
                     <Link href={'/'}>
                         <p>Dashboard</p>
                     </Link>
-                    <Link href={'/'}>
+                    <Link href={'/pelis/page'}>
                         <p>Peliculas</p>
+                    </Link>
+                    <Link href={'/'}>
+                        <p>Vista previa</p>
                     </Link>
                 </div>
             </div>

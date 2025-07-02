@@ -32,7 +32,7 @@ export default function Table({movies}) {
 
     const imageUrlTemplate = (movie) => {
         return (
-            <div style={{width: '500px', overflowX: 'auto'}}>
+            <div style={{overflowX: 'auto', width: '650px'}}>
                 <p>{movie.image}</p>
             </div>
         )
@@ -45,8 +45,9 @@ export default function Table({movies}) {
                 currentPageReportTemplate="{first} to {last} of {totalRecords}">
                 <Column field="title" header="Name"></Column>
                 <Column field="description" header="Descripcion"></Column>
-                <Column header="Imagen" body={imageUrlTemplate}></Column>
+                <Column style={{width: '500px'}} header="Imagen" body={imageUrlTemplate}></Column>
                 <Column header="Imagen previou" body={imagePrevTemplate}></Column>
+                <Column field="active" header="Pelicula activa"></Column>
                 <Column header="Accion" body={buttonActionInterface}></Column>
             </DataTable>
         </div>
