@@ -1,13 +1,11 @@
 import Link from "next/link"
-import { useState } from "react"
-import { useRouter } from "next/router"
 import UseForm from "@/hooks/useForm"
 import Style from '../styles/Form.module.scss'
-
+import { TreeSelect } from "primereact/treeselect"
 
 const Form = ({ formData, forNewMovie = true }) => {
 
-    const {form, HandleChange, Handlesubmit} = UseForm(forNewMovie, formData)
+    const {form, HandleChange, Handlesubmit, optionsStateMovie, setStateMovie, stateMovie} = UseForm(forNewMovie, formData)
 
     return (
         <div className={Style.ContainerForm}>
@@ -15,7 +13,7 @@ const Form = ({ formData, forNewMovie = true }) => {
                 <h1 className="my-3">{forNewMovie ? 'Agregar movie' : 'Actualizar Movie'}</h1>
                 <input type="text"
                     className={Style.FormInput}
-                    placeholder="title"
+                    placeholder="Title"
                     autoComplete="off"
                     name="title"
                     value={form.title}
@@ -23,7 +21,7 @@ const Form = ({ formData, forNewMovie = true }) => {
                 />
                 <input type="text"
                     className={Style.FormInput}
-                    placeholder="description"
+                    placeholder="Description"
                     autoComplete="off"
                     name="description"
                     value={form.description}
@@ -36,6 +34,8 @@ const Form = ({ formData, forNewMovie = true }) => {
                     value={form.image}
                     onChange={HandleChange}
                 />
+                <TreeSelect value={stateMovie} onChange={(e) => setStateMovie(e.value)} options={optionsStateMovie} 
+                className="md:w-20rem w-full" style={{width: '100%', marginBottom: '5%'}} placeholder="Select Item"></TreeSelect>
                 <div className={Style.Container_buttons}>
                     <button className={Style.Btn_submit} type="submit">
                         {forNewMovie ? 'Agregar' : 'Actualizar'}

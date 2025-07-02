@@ -8,7 +8,10 @@ const movieSchema = new mongoose.Schema({
         type: String,
     },
     image: {
-        type: String
+        type: String,
+    },
+    active: {
+        type: String,
     }
 })
 
