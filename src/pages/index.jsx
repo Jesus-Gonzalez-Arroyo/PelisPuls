@@ -9,11 +9,6 @@ import { useEffect } from 'react'
 import 'primereact/resources/themes/bootstrap4-light-blue/theme.css';
 
 export default function Home({movies}) {
-
-  useEffect(()=>{
-    localStorage.setItem('movies', JSON.stringify(movies))
-  })
-
   return (
     <PrimeReactProvider>
       <Head>

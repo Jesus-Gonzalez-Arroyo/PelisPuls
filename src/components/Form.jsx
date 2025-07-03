@@ -5,7 +5,7 @@ import { TreeSelect } from "primereact/treeselect"
 
 const Form = ({ formData, forNewMovie = true }) => {
 
-    const {form, HandleChange, Handlesubmit, optionsStateMovie, setStateMovie, stateMovie} = UseForm(forNewMovie, formData)
+    const {form, HandleChange, Handlesubmit, optionsStateMovie, setStateMovie, stateMovie, optionsTypeMovies, setTypeMovie, typeMovie} = UseForm(forNewMovie, formData)
 
     return (
         <div className={Style.ContainerForm}>
@@ -34,8 +34,14 @@ const Form = ({ formData, forNewMovie = true }) => {
                     value={form.image}
                     onChange={HandleChange}
                 />
-                <TreeSelect value={stateMovie} onChange={(e) => setStateMovie(e.value)} options={optionsStateMovie} 
-                className="md:w-20rem w-full" style={{width: '100%', marginBottom: '5%'}} placeholder="Select Item"></TreeSelect>
+                <div>
+                    <TreeSelect value={typeMovie} onChange={(e) => setTypeMovie(e.value)} options={optionsTypeMovies} 
+                    className="md:w-20rem w-full" style={{width: '100%', marginBottom: '5%'}} placeholder="Select Item"></TreeSelect>
+                </div>
+                <div>
+                    <TreeSelect value={stateMovie} onChange={(e) => setStateMovie(e.value)} options={optionsStateMovie} 
+                    className="md:w-20rem w-full" style={{width: '100%', marginBottom: '5%'}} placeholder="Select Item"></TreeSelect>
+                </div>
                 <div className={Style.Container_buttons}>
                     <button className={Style.Btn_submit} type="submit">
                         {forNewMovie ? 'Agregar' : 'Actualizar'}

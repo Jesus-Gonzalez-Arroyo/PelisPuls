@@ -1,15 +1,10 @@
 import Table from "@/components/Table";
 import Layout from "@/layouts/Layout";
-import { useEffect, useState } from "react";
+import ConectarBD from "@/lib/dbConect";
+import Movie from "@/models/Movie";
+import 'primereact/resources/themes/bootstrap4-light-blue/theme.css';
 
-export default function TableMovies () {
-    const [movies, setMovies] = useState([])
-
-    useEffect(()=>{
-        const getMovies = localStorage.getItem('movies')
-        setMovies(JSON.parse(getMovies))
-    }, [])
-
+export default function TableMovies ({movies}) {
     return (
         <div>
             <Layout>
@@ -19,3 +14,22 @@ export default function TableMovies () {
     )
 }
 
+export async function getServerSideProps() {
+  try {
+    await ConectarBD();
+    const res = await Movie.find({})
+    const movies = res.map((doc)=>{
+      const movie = doc.toObject()
+      movie._id = `${movie._id}`
+      return movie
+    })
+    return {props: {movies}}
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        error: error.message || 'Error inesperado',
+      },
+    };
+  }
+}
