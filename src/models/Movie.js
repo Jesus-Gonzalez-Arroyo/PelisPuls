@@ -10,6 +10,9 @@ const movieSchema = new mongoose.Schema({
     image: {
         type: String,
     },
+    type: {
+        type: String
+    },
     active: {
         type: String,
     }

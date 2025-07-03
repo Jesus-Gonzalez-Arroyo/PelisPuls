@@ -13,11 +13,35 @@ export default function UseForm(forNewMovie, formData) {
             label: 'Desactive',
         },
     ]
+    const optionsTypeMovies = [
+        {
+            key: '0',
+            label: 'Comedia'
+        },
+        {
+            key: '1',
+            label: 'Romance'
+        },
+        {
+            key: '2',
+            label: 'Terror'
+        },
+        {
+            key: '3',
+            label: 'Suspenso'
+        },
+        {
+            key: '4',
+            label: 'Documental'
+        }
+    ]
     const [stateMovie, setStateMovie] = useState(0)
+    const [typeMovie, setTypeMovie] = useState(0)
     const [form, setform] = useState({
         title: formData.title,
         description: formData.description,
         image: formData.image,
+        type: '',
         active: ''
     })
 
@@ -30,9 +54,15 @@ export default function UseForm(forNewMovie, formData) {
     }
 
     const Handlesubmit = e => {
-        form.active = optionsStateMovie[stateMovie].label
         e.preventDefault()
+        form.active = optionsStateMovie[stateMovie].label
+        form.type = optionsTypeMovies[typeMovie].label
+
+        console.log('form', form)
         forNewMovie ? postData(form) : putData(form)
+        router.push('/pelis/page').then(() => {
+            router.reload();
+        })
     }
 
     const putData = async (form) => {
@@ -45,8 +75,8 @@ export default function UseForm(forNewMovie, formData) {
                 },
                 body: JSON.stringify(form)
             })
-            router.push('/pelis/page')
-            data = await res.json()
+            const data = await res.json()
+            return await data
         } catch (error) {
             console.log(error)
         }
@@ -61,12 +91,12 @@ export default function UseForm(forNewMovie, formData) {
                 },
                 body: JSON.stringify(form)
             })
-            router.push('/pelis/page')
-            await res.json()
+            const data = await res.json()
+            return await data
         } catch (error) {
             console.log(error)
         }
     }
 
-    return { form, setform, HandleChange, Handlesubmit, optionsStateMovie, stateMovie, setStateMovie }
+    return { form, setform, HandleChange, Handlesubmit, optionsStateMovie, stateMovie, setStateMovie, optionsTypeMovies, setTypeMovie, typeMovie }
 }
